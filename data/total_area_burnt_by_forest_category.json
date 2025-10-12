@@ -1,0 +1,74 @@
+[
+    {
+        "state": "Australian Capital Territory",
+        "state_abbreviation": "ACT",
+        "native_forest": 83000,
+        "commercial_plantation": 0,
+        "other_forest": 0,
+        "total_forest": 83000
+    },
+    {
+        "state": "New South Wales",
+        "state_abbreviation": "NSW",
+        "native_forest": 5015000,
+        "commercial_plantation": 92000,
+        "other_forest": 16000,
+        "total_forest": 5123000
+    },
+    {
+        "state": "Northern Territory",
+        "state_abbreviation": "NT",
+        "native_forest": 0,
+        "commercial_plantation": 0,
+        "other_forest": 0,
+        "total_forest": 0
+    },
+    {
+        "state": "Queensland",
+        "state_abbreviation": "QLD",
+        "native_forest": 510000,
+        "commercial_plantation": 4000,
+        "other_forest": 0,
+        "total_forest": 514000
+    },
+    {
+        "state": "South Australia",
+        "state_abbreviation": "SA",
+        "native_forest": 118000,
+        "commercial_plantation": 17000,
+        "other_forest": 2000,
+        "total_forest": 137000
+    },
+    {
+        "state": "Tasmania",
+        "state_abbreviation": "TAS",
+        "native_forest": 27000,
+        "commercial_plantation": 3000,
+        "other_forest": 0,
+        "total_forest": 30000
+    },
+    {
+        "state": "Victoria",
+        "state_abbreviation": "VIC",
+        "native_forest": 1444000,
+        "commercial_plantation": 10000,
+        "other_forest": 3000,
+        "total_forest": 1457000
+    },
+    {
+        "state": "Western Australia",
+        "state_abbreviation": "WA",
+        "native_forest": 1140000,
+        "commercial_plantation": 4000,
+        "other_forest": 0,
+        "total_forest": 1144000
+    },
+    {
+        "state": "Across Australia",
+        "state_abbreviation": "AUS",
+        "native_forest": 8336000,
+        "commercial_plantation": 130000,
+        "other_forest": 22000,
+        "total_forest": 8488000
+    }
+]
