@@ -4,14 +4,14 @@
         "state_abbreviation": "ACT",
         "fire_area": 90000,
         "forest_area_in_fire_area": 83000,
-        "proportion_of_fire_area_that_is_forested": 93
+        "proportion_of_fire_area_that_is_forested": 0.93
     },
     {
         "state": "New South Wales",
         "state_abbreviation": "NSW",
         "fire_area": 5682000,
         "forest_area_in_fire_area": 5123000,
-        "proportion_of_fire_area_that_is_forested": 90
+        "proportion_of_fire_area_that_is_forested": 0.90
     },
     {
         "state": "Northern Territory",
@@ -25,34 +25,34 @@
         "state_abbreviation": "QLD",
         "fire_area": 574000,
         "forest_area_in_fire_area": 514000,
-        "proportion_of_fire_area_that_is_forested": 90
+        "proportion_of_fire_area_that_is_forested": 0.90
     },
     {
         "state": "South Australia",
         "state_abbreviation": "SA",
         "fire_area": 313000,
         "forest_area_in_fire_area": 137000,
-        "proportion_of_fire_area_that_is_forested": 44
+        "proportion_of_fire_area_that_is_forested": 0.44
     },
     {
         "state": "Tasmania",
         "state_abbreviation": "TAS",
         "fire_area": 45000,
         "forest_area_in_fire_area": 30000,
-        "proportion_of_fire_area_that_is_forested": 65
+        "proportion_of_fire_area_that_is_forested": 0.65
     },
     {
         "state": "Victoria",
         "state_abbreviation": "VIC",
         "fire_area": 1583000,
         "forest_area_in_fire_area": 1457000,
-        "proportion_of_fire_area_that_is_forested": 92
+        "proportion_of_fire_area_that_is_forested": 0.92
     },
     {
         "state": "Western Australia",
         "state_abbreviation": "WA",
         "fire_area": 2044000,
         "forest_area_in_fire_area": 1143000,
-        "proportion_of_fire_area_that_is_forested": 56
+        "proportion_of_fire_area_that_is_forested": 0.56
     }
 ]
