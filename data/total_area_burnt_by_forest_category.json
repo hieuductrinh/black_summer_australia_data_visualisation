@@ -2,217 +2,217 @@
     {
         "state": "Australian Capital Territory",
         "state_abbreviation": "ACT",
-        "forest_category": "native_forest",
+        "forest_category": "Native forest",
         "value": 83000
     },
     {
         "state": "Australian Capital Territory",
         "state_abbreviation": "ACT",
-        "forest_category": "commercial_plantation",
+        "forest_category": "Commercial plantation",
         "value": 0
     },
     {
         "state": "Australian Capital Territory",
         "state_abbreviation": "ACT",
-        "forest_category": "other_forest",
+        "forest_category": "Other forest",
         "value": 0
     },
     {
         "state": "Australian Capital Territory",
         "state_abbreviation": "ACT",
-        "forest_category": "total_forest",
+        "forest_category": "Total forest",
         "value": 83000
     },
     {
         "state": "New South Wales",
         "state_abbreviation": "NSW",
-        "forest_category": "native_forest",
+        "forest_category": "Native forest",
         "value": 5015000
     },
     {
         "state": "New South Wales",
         "state_abbreviation": "NSW",
-        "forest_category": "commercial_plantation",
+        "forest_category": "Commercial plantation",
         "value": 92000
     },
     {
         "state": "New South Wales",
         "state_abbreviation": "NSW",
-        "forest_category": "other_forest",
+        "forest_category": "Other forest",
         "value": 16000
     },
     {
         "state": "New South Wales",
         "state_abbreviation": "NSW",
-        "forest_category": "total_forest",
+        "forest_category": "Total forest",
         "value": 5123000
     },
     {
         "state": "Northern Territory",
         "state_abbreviation": "NT",
-        "forest_category": "native_forest",
+        "forest_category": "Native forest",
         "value": 0
     },
     {
         "state": "Northern Territory",
         "state_abbreviation": "NT",
-        "forest_category": "commercial_plantation",
+        "forest_category": "Commercial plantation",
         "value": 0
     },
     {
         "state": "Northern Territory",
         "state_abbreviation": "NT",
-        "forest_category": "other_forest",
+        "forest_category": "Other forest",
         "value": 0
     },
     {
         "state": "Northern Territory",
         "state_abbreviation": "NT",
-        "forest_category": "total_forest",
+        "forest_category": "Total forest",
         "value": 0
     },
     {
         "state": "Queensland",
         "state_abbreviation": "QLD",
-        "forest_category": "native_forest",
+        "forest_category": "Native forest",
         "value": 510000
     },
     {
         "state": "Queensland",
         "state_abbreviation": "QLD",
-        "forest_category": "commercial_plantation",
+        "forest_category": "Commercial plantation",
         "value": 4000
     },
     {
         "state": "Queensland",
         "state_abbreviation": "QLD",
-        "forest_category": "other_forest",
+        "forest_category": "Other forest",
         "value": 0
     },
     {
         "state": "Queensland",
         "state_abbreviation": "QLD",
-        "forest_category": "total_forest",
+        "forest_category": "Total forest",
         "value": 514000
     },
     {
         "state": "South Australia",
         "state_abbreviation": "SA",
-        "forest_category": "native_forest",
+        "forest_category": "Native forest",
         "value": 118000
     },
     {
         "state": "South Australia",
         "state_abbreviation": "SA",
-        "forest_category": "commercial_plantation",
+        "forest_category": "Commercial plantation",
         "value": 17000
     },
     {
         "state": "South Australia",
         "state_abbreviation": "SA",
-        "forest_category": "other_forest",
+        "forest_category": "Other forest",
         "value": 2000
     },
     {
         "state": "South Australia",
         "state_abbreviation": "SA",
-        "forest_category": "total_forest",
+        "forest_category": "Total forest",
         "value": 137000
     },
     {
         "state": "Tasmania",
         "state_abbreviation": "TAS",
-        "forest_category": "native_forest",
+        "forest_category": "Native forest",
         "value": 27000
     },
     {
         "state": "Tasmania",
         "state_abbreviation": "TAS",
-        "forest_category": "commercial_plantation",
+        "forest_category": "Commercial plantation",
         "value": 3000
     },
     {
         "state": "Tasmania",
         "state_abbreviation": "TAS",
-        "forest_category": "other_forest",
+        "forest_category": "Other forest",
         "value": 0
     },
     {
         "state": "Tasmania",
         "state_abbreviation": "TAS",
-        "forest_category": "total_forest",
+        "forest_category": "Total forest",
         "value": 30000
     },
     {
         "state": "Victoria",
         "state_abbreviation": "VIC",
-        "forest_category": "native_forest",
+        "forest_category": "Native forest",
         "value": 1444000
     },
     {
         "state": "Victoria",
         "state_abbreviation": "VIC",
-        "forest_category": "commercial_plantation",
+        "forest_category": "Commercial plantation",
         "value": 10000
     },
     {
         "state": "Victoria",
         "state_abbreviation": "VIC",
-        "forest_category": "other_forest",
+        "forest_category": "Other forest",
         "value": 3000
     },
     {
         "state": "Victoria",
         "state_abbreviation": "VIC",
-        "forest_category": "total_forest",
+        "forest_category": "Total forest",
         "value": 1457000
     },
     {
         "state": "Western Australia",
         "state_abbreviation": "WA",
-        "forest_category": "native_forest",
+        "forest_category": "Native forest",
         "value": 1140000
     },
     {
         "state": "Western Australia",
         "state_abbreviation": "WA",
-        "forest_category": "commercial_plantation",
+        "forest_category": "Commercial plantation",
         "value": 4000
     },
     {
         "state": "Western Australia",
         "state_abbreviation": "WA",
-        "forest_category": "other_forest",
+        "forest_category": "Other forest",
         "value": 0
     },
     {
         "state": "Western Australia",
         "state_abbreviation": "WA",
-        "forest_category": "total_forest",
+        "forest_category": "Total forest",
         "value": 1144000
     },
     {
         "state": "Across Australia",
         "state_abbreviation": "AUS",
-        "forest_category": "native_forest",
+        "forest_category": "Native forest",
         "value": 8336000
     },
     {
         "state": "Across Australia",
         "state_abbreviation": "AUS",
-        "forest_category": "commercial_plantation",
+        "forest_category": "Commercial plantation",
         "value": 130000
     },
     {
         "state": "Across Australia",
         "state_abbreviation": "AUS",
-        "forest_category": "other_forest",
+        "forest_category": "Other forest",
         "value": 22000
     },
     {
         "state": "Across Australia",
         "state_abbreviation": "AUS",
-        "forest_category": "total_forest",
+        "forest_category": "Total forest",
         "value": 8488000
     }
 ]
