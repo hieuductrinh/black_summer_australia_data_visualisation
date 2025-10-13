@@ -4,7 +4,6 @@
   "width": 500,
   "height": 500,
   "autosize": "pad",
-  "padding": 30,
   "signals": [
     {"name": "startAngle", "value": 3.18},
     {
@@ -374,7 +373,10 @@
           "fill": {"scale": "color", "field": "forest_category"},
           "x": {"signal": "width / 2"},
           "y": {"signal": "height / 2"},
-          "stroke": {"value": "white"}
+          "stroke": {"value": "white"},
+          "tooltip": {
+            "signal": "{'State': datum.state,'Forest category': datum.forest_category, 'Burnt area': format(datum.value, ',') + ' ha'}"
+          }
         },
         "update": {
           "startAngle": {"field": "startAngle"},
