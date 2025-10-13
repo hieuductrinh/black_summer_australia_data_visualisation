@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "",
+  "width": 800,
+  "height": 500,
+  "layer": [
+    {
+      "projection": {"type": "mercator"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/map.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "color": "grey",
+        "strokeWidth": 2,
+        "opacity": 0.1
+      }
+    },
+    {
+      "projection": {"type": "mercator"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/map.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "mark": {"type": "geoshape", "stroke": "grey", "fill": null}
+    },
+    {
+      "projection": {"type": "mercator"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/map.json",
+        "format": {
+          "type": "topojson",
+          "feature": "NIAFED_v20200623_-9121626041446204951"
+        }
+      },
+      "mark": {"type": "geoshape", "color": "orangered", "opacity": 0.3}
+    },
+    {
+      "projection": {"type": "mercator"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/map.json",
+        "format": {"type": "topojson", "feature": "ne_10m_graticules_30"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "grey",
+        "fill": null,
+        "strokeOpacity": 0.1
+      }
+    }
+  ],
+  "config": {}
+}

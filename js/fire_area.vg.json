@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+  "width": 500,
+  "height": 500,
+  "title": {
+  },
+  "autosize": "none",
+  "padding": {"left": 5, "right": 5, "top": 50, "bottom": 100},
+  "signals": [
+    {"name": "cx", "update": "width / 2"},
+    {"name": "cy", "update": "height / 2"}
+  ],
+  "data": [
+    {
+      "name": "area_of_forest_in_fire_area",
+      "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/area_of_forest_in_fire_area.json",
+      "format": {"type": "json"}
+    }
+  ],
+  "scales": [
+    {
+      "name": "size",
+      "domain": {
+        "data": "area_of_forest_in_fire_area",
+        "field": "forest_area_in_fire_area"
+      },
+      "range": [5000, 25000]
+    },
+    {
+      "name": "color",
+      "type": "linear",
+      "domain": {
+        "data": "area_of_forest_in_fire_area",
+        "field": "proportion_of_fire_area_that_is_forested"
+      },
+      "range": {"scheme": "reds"}
+    }
+  ],
+  "marks": [
+    {
+      "name": "nodes",
+      "type": "symbol",
+      "from": {"data": "area_of_forest_in_fire_area"},
+      "encode": {
+        "enter": {
+          "fill": {
+            "scale": "color",
+            "field": "proportion_of_fire_area_that_is_forested"
+          },
+          "xfocus": {"signal": "cx"},
+          "yfocus": {"signal": "cy"}
+        },
+        "update": {
+          "size": {"signal": "datum.forest_area_in_fire_area", "scale": "size"},
+          "stroke": {"value": "white"},
+          "strokeWidth": {"value": 1},
+          "tooltip": {
+            "signal": "{'State': datum.state, 'Fire area': format(datum.fire_area, ',') + ' ha', 'Forest area in fire area': format(datum.forest_area_in_fire_area, ',') + ' ha', 'Proportion of fire area that is forested': format(datum.proportion_of_fire_area_that_is_forested, '.0%')}"
+          }
+        }
+      },
+      "transform": [
+        {
+          "type": "force",
+          "iterations": 100,
+          "static": false,
+          "forces": [
+            {
+              "force": "collide",
+              "iterations": 2,
+              "radius": {"expr": "sqrt(datum.size)/2"}
+            },
+            {"force": "x", "x": "xfocus", "strength": 0.2},
+            {"force": "y", "y": "yfocus", "strength": 0.1}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "from": {"data": "nodes"},
+      "encode": {
+        "enter": {
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fontSize": {"value": 15},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "white"},
+          "text": {"field": "datum.state_abbreviation"}
+        },
+        "update": {"x": {"field": "x"}, "y": {"field": "y"}}
+      }
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "title": "Forest Area in Fire (%)",
+      "orient": "bottom",
+      "titleAlign": "center",
+      "titleAnchor": "middle",
+      "gradientLength": 200,
+      "titleFontSize": 13,
+      "labelFontSize": 12,
+      "direction": "horizontal",
+      "format": ".0%"
+    }
+  ],
+  "config": {"legend": {"layout": {"bottom": {"anchor": "middle"}}}}
+}
