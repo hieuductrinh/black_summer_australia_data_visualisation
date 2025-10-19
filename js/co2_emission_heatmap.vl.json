@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 655,
+  "title": {"text": "Average monthly CO₂ emissions from megafires", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "background": null,
+  "data": {
+    "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/co2_emission.csv"
+  },
+  "mark": "rect",
+  "encoding": {
+    "y": {"field": "Period", "type": "nominal"},
+    "x": {
+      "field": "Month",
+      "type": "ordinal",
+      "sort": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ]
+    },
+    "tooltip": [
+      {"field": "Period", "type": "nominal"},
+      {"field": "Month", "type": "ordinal"},
+      {"field": "CO₂ Emissions (million tonnes/month)", "type": "quantitative", "title": "CO₂ Emissions (Mt)"}
+    ],
+    "color": {
+      "field": "CO₂ Emissions (million tonnes/month)",
+      "scale": {
+        "type": "linear",
+        "scheme": "redblue",
+        "reverse": true,
+        "domain": [0, 304]
+      },
+      "legend": {
+        "title": "CO₂ Emissions (Mt/month)",
+        "orient": "bottom",
+        "type": "gradient",
+        "gradientLength": 655,
+        "gradientThickness": 15,
+        "tickCount": 5,
+        "titleFont": "Gill Sans",
+        "labelFont": "Gill Sans",
+        "titleFontSize": 13,
+        "labelFontSize": 13
+      }
+    }
+  },
+  "config": {
+    "axis": {"grid": true, "tickBand": "extent", "titleFont": "Gill Sans", "labelFont": "Gill Sans", "titleFontSize": 13, "labelFontSize": 13},
+    "font": "Gill Sans"
+  }
+}

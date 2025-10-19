@@ -1,288 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Australia's Black Summer: The 2019-2020 Bushfire Crisis</title>
-  
-  <!-- Import Vega & Vega-Lite -->
+  <!-- Import Vega & Vega-Lite (Updated versions) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@6.0.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.0.0"></script>
   
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, #d84315 0%, #ff6f00 100%);
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .hero h1 {
-      font-size: 3em;
-      font-weight: 700;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .hero p {
-      font-size: 1.3em;
-      max-width: 800px;
-      margin: 0 auto;
-      opacity: 0.95;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    /* Section Styling */
-    .section {
-      margin-bottom: 60px;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .section-header h2 {
-      font-size: 2.5em;
-      color: #d84315;
-      margin-bottom: 10px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-header h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: #ff6f00;
-      border-radius: 2px;
-    }
-
-    .section-header p {
-      font-size: 1.2em;
-      color: #666;
-      max-width: 700px;
-      margin: 20px auto 0;
-    }
-
-    /* Stats Cards */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin: 40px 0;
-    }
-
-    .stat-card {
-      background: white;
-      padding: 30px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    }
-
-    .stat-value {
-      font-size: 2.5em;
-      font-weight: 700;
-      color: #d84315;
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 1em;
-      color: #666;
-      margin-top: 8px;
-    }
-
-    /* Visualization Container */
-    .viz-container {
-      background: white;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-    }
-
-    .viz-title {
-      font-size: 1.5em;
-      color: #333;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .viz-description {
-      color: #666;
-      margin-bottom: 20px;
-      font-size: 1.05em;
-    }
-
-    /* Center fire map */
-    #fire_map {
-      display: flex;
-      justify-content: center;
-    }
-
-    /* Two-column layout for side-by-side charts */
-    .viz-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 30px;
-      margin-top: 30px;
-    }
-
-    /* Footer */
-    .footer {
-      background: #263238;
-      color: #90a4ae;
-      padding: 30px 20px;
-      text-align: center;
-      margin-top: 60px;
-    }
-
-    .footer p {
-      font-size: 0.95em;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2em;
-      }
-
-      .section-header h2 {
-        font-size: 2em;
-      }
-
-      .viz-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <!-- CSS file -->
+  <link rel="stylesheet" href="css/tufte.css"/>
 </head>
 <body>
-
-  <!-- Hero Section -->
-  <div class="hero">
-    <h1>Australia's Black Summer</h1>
-    <p>The 2019-2020 bushfire season was one of the most catastrophic in recorded history. Unprecedented heat, prolonged drought, and extreme conditions converged to create a crisis that changed the nation forever.</p>
-  </div>
-
-  <!-- Main Container -->
-  <div class="container">
-
-    <!-- Key Statistics -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-value">18.6M</span>
-        <span class="stat-label">Hectares Burned</span>
+  <article>
+    <h1>The 2019-2020 Black Summer</h1>
+    <p class="subtitle">When Australia Burned...</p>
+    <section>
+      <h2>Chapter 1: A nation in flames</h2>
+      <p>The summer of 2019-2020 was one of Australia's darkest chapters in its history. What began as isolated bushfires in September 2019 escalated into an unprecedented catastrophe that consumed the nation for months.</p>
+      <figure id="fire_map"></figure>
+      <footer>Source: Department of Climate Change, Energy, the Environment and Water [1] & Nature Earth [2]</footer>
+      <p>New South Wales bore the brunt: 5.7 million hectares burned. More than all other states combined.</p>
+      <p>But fire area alone doesn't tell the complete story. The true devastation lies in what burned. In NSW, Victoria, Queensland, and the ACT, over 90% of the burned area was forested, including ancient forests and critical wildlife habitat.</p>
+      <p>South Australia and Western Australia had lower forest proportions, as their fires burned through arid landscapes and scrubland.</p>
+      <p>The pattern is clear: the fires hit hardest where forests were densest. The eastern states experienced the worst ecological destruction.</p>
+      <p>Not just land burned. Entire ecosystems vanished.</p>
+      <figure id="fire_area"></figure>
+      <footer>Source: Department of Agriculture, Fisheries and Forestry [3]</footer>
+      <p>New South Wales bore the brunt: over 5 million hectares of native forest burned (more than all other states combined). Victoria followed with 1.4 million hectares. Ancient forests reduced to ash. National parks obliterated. Cities choked by smoke.</p>
+      <figure id="burnt_native_forest_area"></figure>
+      <footer>Source: Department of Agriculture, Fisheries and Forestry [3]</footer>
+    </section>
+    <section>
+      <h2>Chapter 2: A Perfect Storm Six Years in the Making</h2>
+      <p>To understand what happened in 2019-2020, we need to look back. Not just months, but years.</p>
+      <figure id="weather_data_anomaly"></figure>
+      <footer>Source: Bureau of Meteorology [4]</footer>
+      <p>Temperature climbed steadily from 2017. Rainfall dropped below average for years. Wind speed intensified during fire months. Solar radiation remained high, baking moisture from vegetation.</p>
+      <figure id="weather_anomaly_vs_burnt_area"></figure>
+      <footer>Source: Department of Agriculture, Fisheries and Forestry [3] & Bureau of Meteorology [4]</footer>
+      <p>Not all regions experienced the same extremes. New South Wales faced the worst combination: by late 2019, extreme heat, high solar radiation, strong winds, and severe drought all peaked simultaneously. Other states experienced some of these conditions, but NSW experienced all four at once. This explains why a single state accounted for more than half of all burned area.</p>
+    </section>
+    <section>
+      <h2>Chapter 3: The Vicious Cycle</h2>
+      <p>The fires released something else into the atmosphere besides smoke and ash.</p>
+      <figure id="co2_emission_heatmap"></figure>
+      <footer>Source: Springer Nature Limited [5]</footer>
+      <p>In just a few months, the Black Summer bushfires released over 634 million tonnes of CO₂. The air became toxic. Glaciers in New Zealand turned brown from Australian ash.</p>
+      <p>But here's the troubling part: climate change fuels bushfires, and bushfires fuel climate change. Rising temperatures create extreme fire conditions. Those fires release massive amounts of carbon. That carbon drives temperatures even higher.</p>
+      <p>It's a feedback loop, intensifying with each turn.</p>
+    </section>
+    <section>
+      <h2>Ending: The Question</h2>
+      <p>Australia has always had bushfires. But 2019-2020 was different: the scale, intensity, and duration exceeded anything in living memory.</p>
+      <div class="epigraph">
+        <blockquote>
+          <p>If climate change drives catastrophic fires, and catastrophic fires accelerate climate change, how do we break the cycle before it spirals beyond control?</p>
+        </blockquote>
       </div>
-      <div class="stat-card">
-        <span class="stat-value">3,000+</span>
-        <span class="stat-label">Homes Destroyed</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-value">34</span>
-        <span class="stat-label">Lives Lost</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-value">1B+</span>
-        <span class="stat-label">Animals Affected</span>
-      </div>
-    </div>
+      <p>The next Black Summer isn't a question of <i>if</i>.</p>
+      <p>It's a question of <i>when</i>.</p>
+    </section>
+    <section>
+      <h2>Metadata & Notes</h2>
+      <h3>Data Sources</h3>
+      <p>[1] Retrieved from <a href="https://fed.dcceew.gov.au/datasets/erin::national-indicative-aggregated-fire-extent-dataset/about">fed.dcceew.gov.au</a> on 11th Oct 2025 under CC-BY 3.0 License.</p>
+      <p>[2] Retrieved from <a href="https://www.naturalearthdata.com/">naturalearthdata.com</a> on 11th Oct 2025 under CC0 1.0 Public Domain.</p>
+      <p>[3] Retrieved from <a href="https://www.agriculture.gov.au/abares/forestsaustralia/forest-data-maps-and-tools/data-by-topic/fire">agriculture.gov.au</a> on 12th Oct 2025 under CC-BY 4.0 License.</p>
+      <p>[4] Retrieved from <a href="ftp://ftp.bom.gov.au/anon/gen/">bom.gov.au</a> on 12th Oct 2025 under the default terms of the Bureau's copyright notice.</p>
+      <p>[5] Retrieved from <a href="https://www.nature.com/articles/s41598-021-87721-x">nature.com</a> on 18th Oct 2025 under CC-BY 4.0 License.</p>
+      <h3>Acknowledgement of AI</h3>
+      <p>ChatGPT 5 and Claude Sonnet 4.5 were used in the preparation of this visualisation to assist with debugging and refining Vega/Vega-Lite code, enhancing clarity, correcting grammar, and improving stylistic expression. All substantive work, including data collection, data wrangling, and chart creation, was conducted independently by the author.</p>
+      <h3>Author</h3>
+      <p>Hieu Trinh</p>
+      <h3>Published Date</h3>
+      <p>20th Oct 2025</p>
+    </section>
+  </article>
+<script type="text/javascript">
 
-    <!-- Section 1: The Impact -->
-    <div class="section">
-      <div class="section-header">
-        <h2>The Impact</h2>
-        <p>Where and how severely fires burned across Australia</p>
-      </div>
+  var spec2 = "js/fire_map.vl.json";
+  vegaEmbed('#fire_map', spec2, {actions: false}).then(function(result) {
+    // Access the Vega view instance
+  }).catch(console.error);
 
-      <!-- Fire Map -->
-      <div class="viz-container">
-        <h3 class="viz-title">Extent of Fire Damage</h3>
-        <p class="viz-description">
-          The fires spread across multiple states, with New South Wales and Victoria experiencing the most severe impacts. The map below shows native forest areas impacted during the crisis.
-        </p>
-        <div id="fire_map"></div>
-      </div>
+  var spec3 = "js/fire_area.vg.json";
+  vegaEmbed('#fire_area', spec3, {actions: false}).then(function(result) {
+    // Access the Vega view instance
+  }).catch(console.error);
 
-      <!-- Fire Area Charts -->
-      <div class="viz-grid">
-        <div class="viz-container">
-          <h3 class="viz-title">Burned Area by State</h3>
-          <p class="viz-description">
-            NSW and Victoria bore the brunt of the fires, with millions of hectares consumed.
-          </p>
-          <div id="fire_area"></div>
-        </div>
+  var spec4 = "js/forest_area_category.vg.json";
+  vegaEmbed('#forest_area_category', spec4).then(function(result) {
+    // Access the Vega view instance
+  }).catch(console.error);
 
-        <div class="viz-container">
-          <h3 class="viz-title">Impact by Forest Type</h3>
-          <p class="viz-description">
-            Native forests suffered catastrophic damage, representing 98% of total forest area burned.
-          </p>
-          <div id="forest_area_category"></div>
-        </div>
-      </div>
-    </div>
+  var spec5 = "js/weather_data_anomaly.vg.json";
+  vegaEmbed('#weather_data_anomaly', spec5, {actions: false}).then(function(result) {
+    // Access the Vega view instance
+  }).catch(console.error);
 
-  <!-- Footer -->
-  <div class="footer">
-  </div>
+  var spec6 = "js/weather_anomaly_vs_burnt_area.vg.json";
+  vegaEmbed('#weather_anomaly_vs_burnt_area', spec6, {actions: false}).then(function(result) {
+    // Access the Vega view instance
+  }).catch(console.error);
 
-  <!-- Vega Embed Scripts -->
-  <script type="text/javascript">
-    var spec2 = "js/fire_map.vl.json";
-    vegaEmbed('#fire_map', spec2, {actions: false}).then(function(result) {
-      // Access the Vega view instance
-    }).catch(console.error);
-
-    var spec3 = "js/fire_area.vg.json";
-    vegaEmbed('#fire_area', spec3, {actions: false}).then(function(result) {
-      // Access the Vega view instance
-    }).catch(console.error);
-
-    var spec4 = "js/forest_area_category.vg.json";
-    vegaEmbed('#forest_area_category', spec4, {actions: false}).then(function(result) {
-      // Access the Vega view instance
-    }).catch(console.error);
-  </script>
+  var spec7 = "js/co2_emission_heatmap.vl.json";
+  vegaEmbed('#co2_emission_heatmap', spec7, {actions: false}).then(function(result) {
+    // Access the Vega view instance
+  }).catch(console.error);
+  
+  var spec8 = "js/burnt_native_forest_area.vl.json";
+  vegaEmbed('#burnt_native_forest_area', spec8, {actions: false}).then(function(result) {
+    // Access the Vega view instance
+  }).catch(console.error);
+</script>
 
 </body>
 </html>

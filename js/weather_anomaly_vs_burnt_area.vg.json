@@ -1,0 +1,287 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+  "description": "Parallel coordinates plot showing 7 dimensions of automobile statistics.",
+  "title": {"text": "Climate Extremes and Fire Impact by State", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "width": 645,
+  "height": 400,
+  "padding": 0,
+  "config": {
+    "axisY": {
+      "titleX": -2,
+      "titleY": 410,
+      "titleAngle": 0,
+      "titleAlign": "right",
+      "titleBaseline": "top"
+    },
+    "legend": {
+      "layout": {"bottom": {"anchor": "middle"}}
+    },
+    "font": "Gill Sans",
+    "axis": {
+      "titleFontSize": 13,
+      "labelFontSize": 13
+    }
+  },
+  "data": [
+    {
+      "name": "fields",
+      "values": [
+        "Temperature Anomaly (°C)",
+        "Solar Radiation Anomaly (MJ/m²)",
+        "Windspeed Anomaly (m/s)",
+        "Rainfall Anomaly (mm)",
+        "Total Burnt Forest Area (ha)"
+      ]
+    },
+    {
+      "name": "burnt_area",
+      "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/total_area_burnt_by_forest_category.json",
+      "format": {"type": "json"},
+      "transform": [
+        {"type": "filter", "expr": "datum.forest_category == 'Total forest'"}
+      ]
+    },
+    {
+      "name": "weather_data",
+      "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/climate_anomalies_lowess.csv",
+      "format": {
+        "type": "csv",
+        "parse": {"month": "date:'%Y-%m'"},
+        "delimiter": ","
+      },
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "(datum.month >= toDate('2019-07-01') && datum.month <= toDate('2020-03-31'))"
+        },
+        {
+          "type": "aggregate",
+          "groupby": ["state"],
+          "fields": [
+            "Temperature Anomaly (°C)",
+            "Solar Radiation Anomaly (MJ/m²)",
+            "Windspeed Anomaly (m/s)",
+            "Rainfall Anomaly (mm)"
+          ],
+          "ops": ["mean", "mean", "mean", "mean"],
+          "as": [
+            "Temperature Anomaly (°C)",
+            "Solar Radiation Anomaly (MJ/m²)",
+            "Windspeed Anomaly (m/s)",
+            "Rainfall Anomaly (mm)"
+          ]
+        },
+        {
+          "type": "lookup",
+          "from": "burnt_area",
+          "key": "state_abbreviation",
+          "fields": ["state"],
+          "values": ["value"],
+          "as": ["Total Burnt Forest Area (ha)"]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.state == 'NSW' || datum.state == 'VIC' || datum.state == 'WA' ? 'High Impact (> 1M ha)' : 'Others'",
+          "as": "category"
+        }
+      ]
+    },
+    {
+      "name": "text_label",
+      "source": "weather_data",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.state == 'NSW' || datum.state == 'VIC' || datum.state == 'WA'"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "ord",
+      "type": "point",
+      "range": "width",
+      "round": true,
+      "domain": {"data": "fields", "field": "data"}
+    },
+    {
+      "name": "Temperature Anomaly (°C)",
+      "type": "linear",
+      "range": "height",
+      "zero": true,
+      "nice": true,
+      "domain": {"data": "weather_data", "field": "Temperature Anomaly (°C)"}
+    },
+    {
+      "name": "Rainfall Anomaly (mm)",
+      "type": "linear",
+      "range": "height",
+      "zero": true,
+      "nice": true,
+      "domain": {"data": "weather_data", "field": "Rainfall Anomaly (mm)"}
+    },
+    {
+      "name": "Solar Radiation Anomaly (MJ/m²)",
+      "type": "linear",
+      "range": "height",
+      "zero": true,
+      "nice": true,
+      "domain": {
+        "data": "weather_data",
+        "field": "Solar Radiation Anomaly (MJ/m²)"
+      }
+    },
+    {
+      "name": "Windspeed Anomaly (m/s)",
+      "type": "linear",
+      "range": "height",
+      "zero": true,
+      "nice": true,
+      "domain": {"data": "weather_data", "field": "Windspeed Anomaly (m/s)"}
+    },
+    {
+      "name": "Total Burnt Forest Area (ha)",
+      "type": "linear",
+      "range": "height",
+      "zero": true,
+      "nice": true,
+      "domain": {
+        "data": "weather_data",
+        "field": "Total Burnt Forest Area (ha)"
+      }
+    },
+    {
+      "name": "category",
+      "type": "ordinal",
+      "domain": {"data": "weather_data", "field": "category"},
+      "range": {"scheme": "tableau10"}
+    }
+  ],
+  "axes": [
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "Temperature Anomaly (°C)",
+      "title": ["Temperature", "Anomaly(°C)"],
+      "titleAlign": "center",
+      "titleFont": "Gill Sans",
+      "labelFont": "Gill Sans",
+      "offset": {
+        "scale": "ord",
+        "value": "Temperature Anomaly (°C)",
+        "mult": -1
+      }
+    },
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "Rainfall Anomaly (mm)",
+      "title": ["Rainfall", "Anomaly (mm)"],
+      "titleAlign": "center",
+      "titleFont": "Gill Sans",
+      "labelFont": "Gill Sans",
+      "offset": {"scale": "ord", "value": "Rainfall Anomaly (mm)", "mult": -1}
+    },
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "Windspeed Anomaly (m/s)",
+      "title": ["Windspeed", "Anomaly (m/s)"],
+      "titleAlign": "center",
+      "titleFont": "Gill Sans",
+      "labelFont": "Gill Sans",
+      "offset": {"scale": "ord", "value": "Windspeed Anomaly (m/s)", "mult": -1}
+    },
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "Solar Radiation Anomaly (MJ/m²)",
+      "title": ["Solar Radiation", "Anomaly (MJ/m²)"],
+      "titleAlign": "center",
+      "titleFont": "Gill Sans",
+      "labelFont": "Gill Sans",
+      "offset": {
+        "scale": "ord",
+        "value": "Solar Radiation Anomaly (MJ/m²)",
+        "mult": -1
+      }
+    },
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "Total Burnt Forest Area (ha)",
+      "title": ["Total Burnt", "Forest Area (ha)"],
+      "titleAlign": "center",
+      "titleFont": "Gill Sans",
+      "labelFont": "Gill Sans",
+      "offset": {
+        "scale": "ord",
+        "value": "Total Burnt Forest Area (ha)",
+        "mult": -1
+      }
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {"data": "weather_data"},
+      "marks": [
+        {
+          "type": "line",
+          "from": {"data": "fields"},
+          "encode": {
+            "enter": {
+              "x": {"scale": "ord", "field": "data"},
+              "y": {
+                "scale": {"datum": "data"},
+                "field": {"parent": {"datum": "data"}}
+              },
+              "stroke": {"scale": "category", "field": {"parent": "category"}},
+              "strokeWidth": {"value": 1.5},
+              "strokeOpacity": {"value": 1}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "from": {"data": "text_label"},
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "ord",
+            "value": "Total Burnt Forest Area (ha)",
+            "offset": 15
+          },
+          "y": {
+            "scale": "Total Burnt Forest Area (ha)",
+            "field": "Total Burnt Forest Area (ha)"
+          },
+          "fill": {"value": "#e68a39"},
+          "text": {"field": "state"},
+          "font": {"value": "Gill Sans"},
+          "fontSize": {"value": 13},
+          "fontWeight": {"value": "bold"},
+          "align": {"value": "left"},
+          "baseline": {"value": "middle"}
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "stroke": "category",
+      "title": "State",
+      "orient": "bottom",
+      "direction": "horizontal",
+      "offset": 60,
+      "columns": 2,
+      "labelFont": "Gill Sans",
+      "titleFont": "Gill Sans",
+      "titleFontSize": 13,
+      "labelFontSize": 13
+    }
+  ]
+}

@@ -1,9 +1,25 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "",
-  "width": 800,
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.2.0.json",
+  "background": null,
+  "width": 700,
   "height": 500,
+  "title": {"text": "Black Summer's Footprint Across the Nation", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "padding": {"top": 0, "bottom": 0, "left": 0, "right": 0},
   "layer": [
+    {
+      "projection": {"type": "mercator"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/map.json",
+        "format": {"type": "topojson", "feature": "ne_10m_graticules_30"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "grey",
+        "fill": null,
+        "strokeOpacity": 0.5,
+        "strokeDash": [5, 5]
+      }
+    },
     {
       "projection": {"type": "mercator"},
       "data": {
@@ -15,9 +31,14 @@
       },
       "mark": {
         "type": "geoshape",
-        "color": "grey",
-        "strokeWidth": 2,
-        "opacity": 0.1
+        "color": "white",
+        "strokeWidth": 0,
+        "opacity": 1
+      },
+      "encoding": {
+        "tooltip": [
+          {"field": "properties.name", "title": "State"}
+        ]
       }
     },
     {
@@ -46,14 +67,128 @@
       "projection": {"type": "mercator"},
       "data": {
         "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/map.json",
-        "format": {"type": "topojson", "feature": "ne_10m_graticules_30"}
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
       },
+      "transform": [
+        {
+          "filter": {
+            "field": "properties.name",
+            "oneOf": [
+              "New South Wales",
+              "Western Australia",
+              "Victoria",
+              "South Australia",
+              "Northern Territory",
+              "Queensland"
+              ]
+          }
+        },
+        {
+          "calculate": "geoCentroid(null, datum)[0]",
+          "as": "centroid_lon"
+        },
+        {
+          "calculate": "geoCentroid(null, datum)[1]",
+          "as": "centroid_lat"
+        },
+        {
+          "calculate": "datum['properties.name']=='Northern Territory' ? 'Northern\\nTerritory' : datum['properties.name']",
+          "as": "label"
+        }
+      ],
       "mark": {
-        "type": "geoshape",
-        "stroke": "grey",
-        "fill": null,
-        "strokeOpacity": 0.1
+        "type": "text",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#333",
+        "font": "Gill Sans",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "longitude": {"field": "centroid_lon", "type": "quantitative"},
+        "latitude": {"field": "centroid_lat", "type": "quantitative"},
+        "text": {"field": "label", "type": "nominal"}
       }
+    },
+    {
+      "projection": {"type": "mercator"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/map.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "transform": [
+        {
+          "filter": {
+            "field": "properties.name",
+            "oneOf": [
+              "Australian Capital Territory",
+              "Tasmania"
+              ]
+          }
+        },
+        {
+          "calculate": "geoCentroid(null, datum)[0]",
+          "as": "centroid_lon"
+        },
+        {
+          "calculate": "geoCentroid(null, datum)[1]",
+          "as": "centroid_lat"
+        },
+        {
+          "calculate": "datum.centroid_lon",
+          "as": "border_lon"
+        },
+        {
+          "calculate": "datum.centroid_lat",
+          "as": "border_lat"
+        },
+        {
+          "calculate": "datum.border_lon + 5",
+          "as": "label_lon"
+        },
+        {
+          "calculate": "datum.border_lat",
+          "as": "label_lat"
+        },
+        {
+          "calculate": "datum['properties.name']=='Australian Capital Territory' ? 'Australian\\nCapital Territory' : datum['properties.name']",
+          "as": "label"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {"type": "rule", "color": "#666", "strokeWidth": 1},
+          "encoding": {
+            "longitude": {"field": "border_lon", "type": "quantitative"},
+            "latitude": {"field": "border_lat", "type": "quantitative"},
+            "longitude2": {"field": "label_lon"},
+            "latitude2": {"field": "label_lat"}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 13,
+            "fontWeight": "bold",
+            "color": "#333",
+            "align": "left",
+            "dx": 5,
+            "font": "Gill Sans",
+            "lineBreak": "\n"
+          },
+          "encoding": {
+            "longitude": {"field": "label_lon", "type": "quantitative"},
+            "latitude": {"field": "label_lat", "type": "quantitative"},
+            "text": {"field": "label", "type": "nominal"}
+          }
+        }
+      ]
     }
   ],
   "config": {}

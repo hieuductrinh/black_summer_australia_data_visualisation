@@ -1,0 +1,107 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v6.json",
+  "description": "A basic line chart example.",
+  "title": {"text": "Climate Trends from 2014-2020", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "width": 690,
+  "height": 200,
+  "padding": 0,
+  "signals": [
+    {
+      "name": "select_state",
+      "value": "NSW",
+      "bind": {
+        "input": "select",
+        "options": ["NSW", "NT", "VIC", "WA", "QLD", "SA", "TAS"],
+        "name": "Select State "
+      }
+    },
+    {
+      "name": "select_metric",
+      "value": "Temperature Anomaly (°C)",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Temperature Anomaly (°C)",
+          "Rainfall Anomaly (mm)",
+          "Solar Radiation Anomaly (MJ/m²)",
+          "Windspeed Anomaly (m/s)"
+        ],
+        "name": "Select Metric "
+      }
+    },
+    { "name": "black_summer_start", "update": "timeParse('2019-09','%Y-%m')" },
+    { "name": "black_summer_end",   "update": "timeParse('2020-02','%Y-%m')" }
+  ],
+  "data": [
+    {
+      "name": "table",
+      "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/climate_anomalies_lowess.csv",
+      "format": {
+        "type": "csv",
+        "parse": {"month": "date:'%Y-%m'"},
+        "delimiter": ","
+      },
+      "transform": [{"type": "filter", "expr": "datum.state == select_state"}]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "time",
+      "range": "width",
+      "domain": {"data": "table", "field": "month"}
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "range": "height",
+      "nice": true,
+      "zero": true,
+      "domain": {"data": "table", "field": {"signal": "select_metric"}}
+    }
+  ],
+  "axes": [
+    {"orient": "bottom", "scale": "x", "title": "Month", "titleFont": "Gill Sans", "labelFont": "Gill Sans"},
+    {"orient": "left", "scale": "y", "title": {"signal": "select_metric"}, "titleFont": "Gill Sans", "labelFont": "Gill Sans"}
+  ],
+  "marks": [
+    {
+      "type": "line",
+      "from": {"data": "table"},
+      "sort": {"field": "month", "order": "ascending"},
+      "encode": {
+        "enter": {"strokeWidth": {"value": 2}},
+        "update": {
+          "x": {"scale": "x", "field": "month"},
+          "y": {"scale": "y", "field": {"signal": "select_metric"}},
+          "state": {"signal": "select_state"},
+          "strokeOpacity": {"value": 1}
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "from": {"data": "table"},
+      "sort": {"field": "month", "order": "ascending"},
+      "encode": {
+        "enter": {"size": {"value": 30}},
+        "update": {
+          "x": {"scale": "x", "field": "month"},
+          "y": {"scale": "y", "field": {"signal": "select_metric"}},
+          "state": {"signal": "select_state"},
+          "strokeOpacity": {"value": 1},
+          "tooltip": {
+            "signal": "{'Month': timeFormat(datum.month,'%Y-%m'), 'Metric': select_metric, 'Value': format(datum[select_metric], '.2f')}"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Gill Sans",
+    "axis": {
+      "titleFontSize": 13,
+      "labelFontSize": 13
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 567,
+  "height": 300,
+  "background": null,
+  "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
+  "title": {"text": "Native Forest Area Burned by State", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "data": {
+    "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/total_area_burnt_by_forest_category.csv",
+    "format": {"type": "csv"}
+  },
+  "encoding": {
+    "y": {"field": "State", "type": "nominal", "sort": {"field": "Area", "order": "descending"}},
+    "x": {"field": "Area", "type": "quantitative", "scale": {"domain": [0, 5500000]}, "title": "Native Forest Area in Fire Area (ha)"},
+    "tooltip": [
+      {"field": "Area", "type": "quantitative", "title": "Native Forest Area in Fire Area (ha)", "format": ","}
+    ]
+  },
+  "layer": [{
+    "mark": "bar"
+  }],
+  "config": {
+    "font": "Gill Sans",
+    "axis": {
+      "titleFontSize": 13,
+      "labelFontSize": 13
+    }
+  }
+}
