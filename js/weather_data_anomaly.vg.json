@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v6.json",
   "description": "A basic line chart example.",
-  "title": {"text": "Climate Trends from 2014-2020", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "title": {"text": "Climate Trends from 2014-2020", "anchor": "start", "fontSize": 18, "font": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "offset": 30},
   "width": 690,
   "height": 200,
   "padding": 0,
@@ -83,9 +83,9 @@
     }
   ],
   "axes": [
-    {"orient": "bottom", "scale": "x", "title": "Month", "titleFont": "Gill Sans", "labelFont": "Gill Sans"},
-    {"orient": "left", "scale": "y1", "title": {"signal": "select_metric1"}, "titleFont": "Gill Sans", "labelFont": "Gill Sans", "titleColor": "#5676a4", "minExtent": 50},
-    {"orient": "right", "scale": "y2", "title": {"signal": "select_metric2"}, "titleFont": "Gill Sans", "labelFont": "Gill Sans", "titleColor": "#d98f4a", "minExtent": 50}
+    {"orient": "bottom", "scale": "x", "title": "Month", "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif"},
+    {"orient": "left", "scale": "y1", "title": {"signal": "select_metric1"}, "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "titleColor": "#5676a4", "minExtent": 50},
+    {"orient": "right", "scale": "y2", "title": {"signal": "select_metric2"}, "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "titleColor": "#d98f4a", "minExtent": 50}
   ],
   "marks": [
     {
@@ -152,7 +152,7 @@
     }
   ],
   "config": {
-    "font": "Gill Sans",
+    "font": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
     "axis": {
       "titleFontSize": 13,
       "labelFontSize": 13

@@ -4,7 +4,7 @@
   "height": 300,
   "background": null,
   "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
-  "title": {"text": "Native Forest Area Burned by State", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "title": {"text": "Native Forest Area Burned by State", "anchor": "start", "fontSize": 18, "font": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "offset": 30},
   "params": [
     {"name": "min_native_forest_fire_area", "value": 27000,
       "bind": {"input": "range", "min": 27000, "max": 5015000, "step": 10000, "name": "Minimum Fire Area (ha)"} }
@@ -28,7 +28,7 @@
     "mark": "bar"
   }],
   "config": {
-    "font": "Gill Sans",
+    "font": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
     "axis": {
       "titleFontSize": 13,
       "labelFontSize": 13

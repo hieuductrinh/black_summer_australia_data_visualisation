@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v6.json",
   "description": "Parallel coordinates plot showing 7 dimensions of automobile statistics.",
-  "title": {"text": "Climate Extremes and Fire Impact by State", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "title": {"text": "Climate Extremes and Fire Impact by State", "anchor": "start", "fontSize": 18, "font": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "offset": 30},
   "width": 645,
   "height": 400,
   "padding": 0,
@@ -16,7 +16,7 @@
     "legend": {
       "layout": {"bottom": {"anchor": "middle"}}
     },
-    "font": "Gill Sans",
+    "font": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
     "axis": {
       "titleFontSize": 13,
       "labelFontSize": 13
@@ -165,8 +165,8 @@
       "scale": "Temperature Anomaly (°C)",
       "title": ["Temperature", "Anomaly(°C)"],
       "titleAlign": "center",
-      "titleFont": "Gill Sans",
-      "labelFont": "Gill Sans",
+      "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
+      "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
       "offset": {
         "scale": "ord",
         "value": "Temperature Anomaly (°C)",
@@ -179,8 +179,8 @@
       "scale": "Rainfall Anomaly (mm)",
       "title": ["Rainfall", "Anomaly (mm)"],
       "titleAlign": "center",
-      "titleFont": "Gill Sans",
-      "labelFont": "Gill Sans",
+      "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
+      "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
       "offset": {"scale": "ord", "value": "Rainfall Anomaly (mm)", "mult": -1}
     },
     {
@@ -189,8 +189,8 @@
       "scale": "Windspeed Anomaly (m/s)",
       "title": ["Windspeed", "Anomaly (m/s)"],
       "titleAlign": "center",
-      "titleFont": "Gill Sans",
-      "labelFont": "Gill Sans",
+      "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
+      "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
       "offset": {"scale": "ord", "value": "Windspeed Anomaly (m/s)", "mult": -1}
     },
     {
@@ -199,8 +199,8 @@
       "scale": "Solar Radiation Anomaly (MJ/m²)",
       "title": ["Solar Radiation", "Anomaly (MJ/m²)"],
       "titleAlign": "center",
-      "titleFont": "Gill Sans",
-      "labelFont": "Gill Sans",
+      "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
+      "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
       "offset": {
         "scale": "ord",
         "value": "Solar Radiation Anomaly (MJ/m²)",
@@ -213,8 +213,8 @@
       "scale": "Total Burnt Forest Area (ha)",
       "title": ["Total Burnt", "Forest Area (ha)"],
       "titleAlign": "center",
-      "titleFont": "Gill Sans",
-      "labelFont": "Gill Sans",
+      "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
+      "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
       "offset": {
         "scale": "ord",
         "value": "Total Burnt Forest Area (ha)",
@@ -261,7 +261,7 @@
           },
           "fill": {"value": "#e68a39"},
           "text": {"field": "state"},
-          "font": {"value": "Gill Sans"},
+          "font": {"value": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif"},
           "fontSize": {"value": 13},
           "fontWeight": {"value": "bold"},
           "align": {"value": "left"},
@@ -278,8 +278,8 @@
       "direction": "horizontal",
       "offset": 60,
       "columns": 2,
-      "labelFont": "Gill Sans",
-      "titleFont": "Gill Sans",
+      "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
+      "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
       "titleFontSize": 13,
       "labelFontSize": 13
     }

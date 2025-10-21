@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": 655,
-  "title": {"text": "Average monthly CO₂ emissions from megafires", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "title": {"text": "Average monthly CO₂ emissions from megafires", "anchor": "start", "fontSize": 18, "font": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "offset": 30},
   "background": null,
   "data": {
     "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/co2_emission.csv"
@@ -47,15 +47,15 @@
         "gradientLength": 655,
         "gradientThickness": 15,
         "tickCount": 5,
-        "titleFont": "Gill Sans",
-        "labelFont": "Gill Sans",
+        "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
+        "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif",
         "titleFontSize": 13,
         "labelFontSize": 13
       }
     }
   },
   "config": {
-    "axis": {"grid": true, "tickBand": "extent", "titleFont": "Gill Sans", "labelFont": "Gill Sans", "titleFontSize": 13, "labelFontSize": 13},
-    "font": "Gill Sans"
+    "axis": {"grid": true, "tickBand": "extent", "titleFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "labelFont": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif", "titleFontSize": 13, "labelFontSize": 13},
+    "font": "Gill Sans, Gill Sans MT, Calibri, Lato, Montserrat, sans-serif"
   }
 }
