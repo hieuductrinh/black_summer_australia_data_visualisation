@@ -16,7 +16,7 @@
       }
     },
     {
-      "name": "select_metric",
+      "name": "select_metric1",
       "value": "Temperature Anomaly (°C)",
       "bind": {
         "input": "select",
@@ -26,7 +26,21 @@
           "Solar Radiation Anomaly (MJ/m²)",
           "Windspeed Anomaly (m/s)"
         ],
-        "name": "Select Metric "
+        "name": "Select Metric 1 "
+      }
+    },
+    {
+      "name": "select_metric2",
+      "value": "Rainfall Anomaly (mm)",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Temperature Anomaly (°C)",
+          "Rainfall Anomaly (mm)",
+          "Solar Radiation Anomaly (MJ/m²)",
+          "Windspeed Anomaly (m/s)"
+        ],
+        "name": "Select Metric 2 "
       }
     },
     { "name": "black_summer_start", "update": "timeParse('2019-09','%Y-%m')" },
@@ -52,17 +66,26 @@
       "domain": {"data": "table", "field": "month"}
     },
     {
-      "name": "y",
+      "name": "y1",
       "type": "linear",
       "range": "height",
       "nice": true,
       "zero": true,
-      "domain": {"data": "table", "field": {"signal": "select_metric"}}
+      "domain": {"data": "table", "field": {"signal": "select_metric1"}}
+    },
+    {
+      "name": "y2",
+      "type": "linear",
+      "range": "height",
+      "nice": true,
+      "zero": true,
+      "domain": {"data": "table", "field": {"signal": "select_metric2"}}
     }
   ],
   "axes": [
     {"orient": "bottom", "scale": "x", "title": "Month", "titleFont": "Gill Sans", "labelFont": "Gill Sans"},
-    {"orient": "left", "scale": "y", "title": {"signal": "select_metric"}, "titleFont": "Gill Sans", "labelFont": "Gill Sans"}
+    {"orient": "left", "scale": "y1", "title": {"signal": "select_metric1"}, "titleFont": "Gill Sans", "labelFont": "Gill Sans", "titleColor": "#5676a4", "minExtent": 50},
+    {"orient": "right", "scale": "y2", "title": {"signal": "select_metric2"}, "titleFont": "Gill Sans", "labelFont": "Gill Sans", "titleColor": "#d98f4a", "minExtent": 50}
   ],
   "marks": [
     {
@@ -70,10 +93,10 @@
       "from": {"data": "table"},
       "sort": {"field": "month", "order": "ascending"},
       "encode": {
-        "enter": {"strokeWidth": {"value": 2}},
+        "enter": {"strokeWidth": {"value": 2}, "stroke": {"value": "#5676a4"}},
         "update": {
           "x": {"scale": "x", "field": "month"},
-          "y": {"scale": "y", "field": {"signal": "select_metric"}},
+          "y": {"scale": "y1", "field": {"signal": "select_metric1"}},
           "state": {"signal": "select_state"},
           "strokeOpacity": {"value": 1}
         }
@@ -84,14 +107,45 @@
       "from": {"data": "table"},
       "sort": {"field": "month", "order": "ascending"},
       "encode": {
-        "enter": {"size": {"value": 30}},
+        "enter": {"size": {"value": 30}, "fill": {"value": "#5676a4"}},
         "update": {
           "x": {"scale": "x", "field": "month"},
-          "y": {"scale": "y", "field": {"signal": "select_metric"}},
+          "y": {"scale": "y1", "field": {"signal": "select_metric1"}},
           "state": {"signal": "select_state"},
           "strokeOpacity": {"value": 1},
           "tooltip": {
-            "signal": "{'Month': timeFormat(datum.month,'%Y-%m'), 'Metric': select_metric, 'Value': format(datum[select_metric], '.2f')}"
+            "signal": "{'Month': timeFormat(datum.month,'%Y-%m'), 'Metric': select_metric1, 'Value': format(datum[select_metric1], '.2f')}"
+          }
+        }
+      }
+    },
+    {
+      "type": "line",
+      "from": {"data": "table"},
+      "sort": {"field": "month", "order": "ascending"},
+      "encode": {
+        "enter": {"strokeWidth": {"value": 2}, "stroke": {"value": "#d98f4a"}},
+        "update": {
+          "x": {"scale": "x", "field": "month"},
+          "y": {"scale": "y2", "field": {"signal": "select_metric2"}},
+          "state": {"signal": "select_state"},
+          "strokeOpacity": {"value": 1}
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "from": {"data": "table"},
+      "sort": {"field": "month", "order": "ascending"},
+      "encode": {
+        "enter": {"size": {"value": 30}, "fill": {"value": "#d98f4a"}},
+        "update": {
+          "x": {"scale": "x", "field": "month"},
+          "y": {"scale": "y2", "field": {"signal": "select_metric2"}},
+          "state": {"signal": "select_state"},
+          "strokeOpacity": {"value": 1},
+          "tooltip": {
+            "signal": "{'Month': timeFormat(datum.month,'%Y-%m'), 'Metric': select_metric2, 'Value': format(datum[select_metric2], '.2f')}"
           }
         }
       }

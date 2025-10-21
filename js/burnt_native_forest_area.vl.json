@@ -5,16 +5,24 @@
   "background": null,
   "description": "Bar chart with text labels. Set domain to make the frame cover the labels.",
   "title": {"text": "Native Forest Area Burned by State", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
+  "params": [
+    {"name": "min_native_forest_fire_area", "value": 27000,
+      "bind": {"input": "range", "min": 27000, "max": 5015000, "step": 10000, "name": "Minimum Fire Area (ha)"} }
+  ],
   "data": {
     "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/total_area_burnt_by_forest_category.csv",
     "format": {"type": "csv"}
   },
+  "transform": [
+    {"filter": "datum.Area >= min_native_forest_fire_area"}
+  ],
   "encoding": {
-    "y": {"field": "State", "type": "nominal", "sort": {"field": "Area", "order": "descending"}},
+    "y": {"field": "State", "type": "nominal", "sort": {"field": "Area", "order": "descending"}, "axis": {"minExtent": 152}},
     "x": {"field": "Area", "type": "quantitative", "scale": {"domain": [0, 5500000]}, "title": "Native Forest Area in Fire Area (ha)"},
     "tooltip": [
       {"field": "Area", "type": "quantitative", "title": "Native Forest Area in Fire Area (ha)", "format": ","}
-    ]
+    ],
+    "color": {"value": "#9a2420"}
   },
   "layer": [{
     "mark": "bar"

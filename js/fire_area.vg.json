@@ -4,10 +4,15 @@
   "height": 300,
   "title": {"text": "Fire Area by State", "anchor": "start", "fontSize": 18, "font": "Gill Sans", "offset": 30},
   "autosize": "none",
-  "padding": {"left": 5, "right": 235, "top": 100, "bottom": 50},
+  "padding": {"left": 5, "right": 235, "top": 61, "bottom": 50},
   "signals": [
     {"name": "cx", "update": "width / 2"},
-    {"name": "cy", "update": "height / 2"}
+    {"name": "cy", "update": "height / 2"},
+    {
+      "name": "min_fire_area",
+      "bind": {"input": "range", "min": 45000, "max": 5682000, "step": 10000, "name": "Minimum Fire Area (ha)"},
+      "value": 45000
+    }
   ],
   "data": [
     {
@@ -15,7 +20,8 @@
       "url": "https://raw.githubusercontent.com/hieuductrinh/black_summer_australia_data_visualisation/refs/heads/main/data/area_of_forest_in_fire_area.json",
       "format": {"type": "json"},
       "transform": [
-        {"type": "filter", "expr": "datum.forest_area_in_fire_area > 0"}
+        {"type": "filter", "expr": "datum.forest_area_in_fire_area > 0"},
+        {"type": "filter", "expr": "datum.fire_area >= min_fire_area"}
       ]
     }
   ],
